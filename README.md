@@ -1,4 +1,3 @@
-```markdown
 # Expense Management System
 
 This project is an Expense Management System built using FastAPI and MongoDB. It provides a backend service for tracking and managing personal or organizational expenses and incomes.

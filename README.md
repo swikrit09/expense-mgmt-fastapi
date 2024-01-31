@@ -20,7 +20,7 @@ This project is an Expense Management System built using FastAPI and MongoDB. It
 
 1. **Clone the Repository**
    ```bash
-   git clone [[URL to the repository]](https://github.com/swikrit09/expense-mgmt-fastapi.git)
+   git clone https://github.com/swikrit09/expense-mgmt-fastapi.git
    cd server
    ```
 

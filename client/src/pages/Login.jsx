@@ -4,10 +4,11 @@ import axios from 'axios'
 import { backend_url } from '../utils/url'
 import Cookies from "js-cookie"
 import { useUser } from '../context/UserContext'
+import Loader from '../components/Loader/Loader'
 
 const Login = () => {
     const navigate=useNavigate()
-    const {user,loginUser} = useUser()
+    const {user,loginUser,loading,setLoading} = useUser()
     
     if(user){
         navigate("/",{replace:true})
@@ -22,10 +23,12 @@ const Login = () => {
     const  handleSubmit=async(e)=>{
         e.preventDefault();
         try {
+            setLoading(true)
             const res= await axios.post(`${backend_url}/login`,formDetails)
             // alert(res.data.token_type)
+            setLoading(false)
             if(res.data.token_type){
-                alert("Login Successful")
+                // alert("Login Successful")
                 loginUser(res.data.access_token)
                 // Cookies.set("token_expense",res.data.access_token)
                 navigate("/")
@@ -41,7 +44,11 @@ const Login = () => {
             <div className="transcontainer">
 
                 <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
+                {loading?(<>
+                <Loader/>
+                </>) :
+                    
+                    (<form onSubmit={handleSubmit}>
                     <div className="field">
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username"  id="username" onChange={handleChange} required/>
@@ -56,7 +63,7 @@ const Login = () => {
                         <button type='submit'>Submit</button>
                         <p>Not a User, <NavLink to="/register">Register</NavLink></p>
                     </div>
-                </form>
+                </form>)}
             </div>
 
         </main>

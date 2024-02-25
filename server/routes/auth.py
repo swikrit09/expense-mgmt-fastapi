@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException,Header,status,Response
 from models import User
 from models import Token
 from fastapi.security import OAuth2PasswordRequestForm
-from dependencies import create_access_token,get_current_user
+from dependencies import create_access_token,get_current_user,verify_password,hash_password
 from db.mongodb import users_collection
 from typing import Optional
 
@@ -12,7 +12,7 @@ router = APIRouter()
 
 @router.post("/register")
 def register(user: User):
-    users_collection.insert_one({"username": user.username, "password": user.password})
+    users_collection.insert_one({"username": user.username, "password": hash_password(user.password)})
     return {"message": "User registered successfully"}
 
 @router.post("/login")
@@ -20,7 +20,7 @@ def login(user: User):
     user_data = users_collection.find_one({"username": user.username})
     if(not user_data):
         raise HTTPException(status_code=401, detail="User not exist")
-    if user_data and user_data["password"] == user.password:
+    if user_data and verify_password(user.password,user_data["password"]  ):
         token = create_access_token(user.username)
         return {"access_token": token, "token_type": "bearer"}
     else:

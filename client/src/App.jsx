@@ -66,8 +66,4 @@ const App = () => {
 
 export default App
 
-// todo 
-// create a getuser route/middleware to check if user is logged in before rendering certain pages.
-// create a protected route logic
-// set the user in a context to get the details accessiblle to all the pages 
 

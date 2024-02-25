@@ -8,5 +8,44 @@ body{
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
+    cursor: none;
     /* background-color: rgb(0, 3, 4); */
+}
+.cursor{
+width: 10px;
+height: 10px;
+background-color: rgba(234, 3, 3, 0.702);
+border-radius: 50%;
+}
+.cursor-outline{
+        width: 30px;
+        height: 30px;
+        border: 2px solid  rgba(197, 0, 0, 0.702);
+        border-radius: 50%;  
+}
+.cursor,.cursor-outline{
+    position: fixed;
+    top:0;
+    left: 0;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cursor.hover{
+    width: 80px;
+    height: 80px;
+    z-index: 1000;
+    top: -5%;
+    left: -10%;
+    background-color: rgb(255, 248, 42);
+    mix-blend-mode: difference;
+}
+@media screen and (max-width:768px) {
+    html{
+        font-size: 70.5%;
+    }
+    .cursor,.cursor-outline{
+        display: none;
+    }
 }

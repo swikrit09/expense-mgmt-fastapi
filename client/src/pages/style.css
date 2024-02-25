@@ -4,19 +4,21 @@
     display: flex;
     padding: 2rem 6rem;
     gap: 2rem;
+    flex-wrap: nowrap;
 }
 
 .left {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-basis: 50%;
     /* align-items:center; */
 }
 
 .left .head {
     font-size: 4.5rem;
     margin-bottom: 0.6rem;
-    background: linear-gradient(128deg, #ff3838, #3515ff);
+    background: radial-gradient(circle at 33% 100%, #996a06 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
     color: transparent;
     background-clip: text;
     animation: bgChange 5s ease-in infinite;
@@ -70,11 +72,24 @@
     border-radius: 15px;
     font-weight: bold;
     font-size: 1rem;
+    margin: 0.3rem 0;
     background: linear-gradient(128deg, #ff3838, #3515ff);
+}
+.button.mobile{
+    display: none;
 }
 
 .left .button:hover {
     animation: bgChange 5s ease-in infinite;
+}
+
+.right {
+    flex: 1;
+    flex-basis: 40%;
+}
+
+.right img {
+    height: 80%;
 }
 
 
@@ -86,12 +101,28 @@
 /* add transaction page designs */
 
 .transmain {
-    min-height: calc(100vh - 8rem);
+    min-height: calc(100vh - 6rem);
     display: flex;
-    background: linear-gradient(128deg, #ff3838, #3515ff);
+    background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #b0cf51);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: opacity 3s linear infinite;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.9;
+        background: radial-gradient(circle at 33% 100%, #fe73e5 4%, #d92e7f 30%, #f15245 62%, #b0cf51 85%, #9b36b7);
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .transcontainer {
@@ -103,8 +134,13 @@
     border-radius: 1rem;
     padding: 0.9rem 4rem 2rem 4rem;
     background: #ffffff;
-    box-shadow:  10px 10px 23px #0c326f,
-         -10px -10px 23px #430f0f;
+    box-shadow: 10px 10px 23px #0c326f,
+        -10px -10px 23px #430f0f;
+    transition: all 0.3s ease-in;
+}
+
+.transcontainer:hover {
+    transform: scale(1.02);
 }
 
 .transcontainer form {
@@ -142,8 +178,26 @@
     cursor: pointer;
     width: 5rem;
 }
-.field a{
+
+.field a {
     color: #4f34fd;
     font-weight: 500;
     text-decoration: none;
+}
+
+@media screen and (max-width:600px) {
+    .home-main {
+        flex-direction: column;
+        padding: 15%;
+        justify-content: space-between;
+    }
+    .home-main :is(.left,.right){
+        width: 100%;
+    }
+    .right img{
+        width: 100%;
+    }
+    .button.mobile{
+        display: inline-block;
+    }
 }

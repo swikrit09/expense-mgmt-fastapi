@@ -4,7 +4,7 @@ import Cookies from "js-cookie"
 
 const Transaction = () => {
   const [formDetails, setFormDetails] = React.useState({
-    amount: 0,
+    amount: null,
     description: '',
     type: "income"
   })
@@ -40,11 +40,11 @@ const Transaction = () => {
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label htmlFor="amount">Amount</label>
-            <input type="text" name="amount" required placeholder='Enter amount in ₹' onChange={handleChange} value={formDetails.amount}/>
+            <input type="number" id="amount" name="amount"  required placeholder='Enter amount in ₹' onChange={handleChange} value={formDetails.amount}/>
           </div>
           <div className="field">
             <label htmlFor="description">Description</label>
-            <input type="text" name="description" placeholder='Describe the transaction...' onChange={handleChange} value={formDetails.description} />
+            <input type="text" id="description" name="description" placeholder='Describe the transaction...' onChange={handleChange} value={formDetails.description} />
           </div>
           <div className="field">
             <label htmlFor="income">Income</label>

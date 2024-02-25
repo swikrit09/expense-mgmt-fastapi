@@ -25,10 +25,10 @@ const Navbar = () => {
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3YAYc823625OgPX6pKg7BNaboun1V0h97kf1Q7Ce6r6gbw0zfuYWcEeGz41suiehIDYg&usqp=CAU" alt="logo" />
                 </NavLink>
                 <div className="links">
-                    <NavLink to="/addtransaction">
+                    <NavLink to="/addtransaction" className="link">
                         <p>Add Trasaction</p>
                     </NavLink>
-                    <NavLink to="/details">
+                    <NavLink to="/details" className="link">
                         <p>Transaction Details</p>
                     </NavLink>
                     {
@@ -39,7 +39,9 @@ const Navbar = () => {
                             </NavLink>
                             : <>
                                 <div className="userdata">
+                                    <div className="userlogo">
                                     <img src='https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg' title={user.username} alt='profile' />
+                                    </div>
                                     <p>{user.username}</p>
                                 </div>
                                 <button className="logoutbtn" onClick={() => logoutUser(navigate, setUser)}>Logout</button>

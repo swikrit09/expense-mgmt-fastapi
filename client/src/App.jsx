@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.jsx'
 import ProtectedRoutes from './components/ProtectedRoutes.jsx'
 import { UserProvider } from "./context/UserContext.jsx"
 import { useRef, useEffect ,useState} from 'react'
+import { ThemeProvider } from './context/ThemeContext.jsx'
 
 const App = () => {
   const [isHovering, setIsHovering] = useState(false)
@@ -40,11 +41,37 @@ const App = () => {
     };
   }, []); // Empty dependency array means this effect runs only once after the initial render
 
+  const [themeMode, setThemeMode] = useState("light")
+  const darkTheme=()=>{
+    setThemeMode("dark")
+  }
+  const lightTheme=()=>{
+    setThemeMode("light")
+  }
+  const changeTheme=(e)=>{
+    if(e.target.checked){
+      darkTheme()
+    }else{
+      lightTheme()
+    }
+  }
+
+  useEffect(()=>{
+    document.querySelector("html").classList.remove("dark","light")
+    document.querySelector("html").classList.add(themeMode)
+  },[themeMode])
   return (
     <>
+    <ThemeProvider value={{themeMode,darkTheme,lightTheme}}>
+
       <main className='container'>
         <div className="cursor-outline" ref={cursorOutlineRef} ></div>
         <div className={`cursor ${isHovering?"hover" : ""}`} ref={cursorRef} ></div>
+
+        <div className="theme-switch">
+          <input type="checkbox"  id="theme"  onChange={changeTheme}/>
+          <label htmlFor="theme">&nbsp;</label>
+        </div>
         <BrowserRouter>
           <UserProvider>
             <Navbar />
@@ -60,6 +87,7 @@ const App = () => {
           </UserProvider>
         </BrowserRouter>
       </main>
+    </ThemeProvider>
     </>
   )
 }

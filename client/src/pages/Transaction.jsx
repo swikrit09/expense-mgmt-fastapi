@@ -40,7 +40,7 @@ const Transaction = () => {
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label htmlFor="amount">Amount</label>
-            <input type="number" id="amount" name="amount"  required placeholder='Enter amount in ₹' onChange={handleChange} value={formDetails.amount}/>
+            <input type="number" id="amount" name="amount"  required placeholder='Enter amount in ₹' onChange={handleChange} value={formDetails.amount} min="0" step="5" />
           </div>
           <div className="field">
             <label htmlFor="description">Description</label>

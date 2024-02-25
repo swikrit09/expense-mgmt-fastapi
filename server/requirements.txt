@@ -1,6 +1,6 @@
-fastapi
-uvicorn[standard]
-pymongo
+fastapi==0.79.0
+uvicorn[standard]==0.18.2
+pymongo==4.1.1
 python-jose==3.3.0
 passlib==1.7.4
-python-multipart
+python-multipart==0.0.5

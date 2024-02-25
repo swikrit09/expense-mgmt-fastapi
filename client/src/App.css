@@ -14,13 +14,13 @@ body{
 .cursor{
 width: 10px;
 height: 10px;
-background-color: rgba(234, 3, 3, 0.702);
+background-color: rgba(76, 3, 234, 0.869);
 border-radius: 50%;
 }
 .cursor-outline{
         width: 30px;
         height: 30px;
-        border: 2px solid  rgba(197, 0, 0, 0.702);
+        border: 2px solid  rgba(47, 12, 0, 0.949);
         border-radius: 50%;  
 }
 .cursor,.cursor-outline{

@@ -37,6 +37,8 @@ const Login = () => {
             }
         } catch (error) {
             alert(error.response.data.detail)
+        }finally{
+            setLoading(false)
         }
     }
     return (

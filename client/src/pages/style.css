@@ -207,6 +207,7 @@
 
 .dark{
     background-color: rgb(20, 20, 20);
+    transition: all 0.4s ease-in-out;
 }
 .dark :is(.subhead,.para){
     color: rgb(120, 120, 120);
@@ -227,4 +228,13 @@
 .dark .logo{
     filter: invert(0.9);
     
+}
+.dark .cursor-outline{
+    border-color:wheat;
+}
+.dark .cursor{
+    background-color: rgb(138, 138, 138);
+}
+.dark .cursor.hover{
+    background-color: rgb(0, 70, 209);
 }
